@@ -1,0 +1,31 @@
+# HoloVoice Web App Requirements
+# Extracting and adapting dependencies from holomind_bisa patterns
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+
+# Template Engine
+jinja2>=3.1.0
+
+# Core Hologram Generation (from existing 3DHologram.py)
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Additional utilities (inspired by holomind_bisa)
+aiofiles>=23.0.0
+python-dotenv>=1.0.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Optional: For enhanced voice processing (if needed)
+# SpeechRecognition>=3.10.0
+# pyttsx3>=2.90
+
+# Optional: For advanced AI features (if expanding)
+# anthropic>=0.7.0
+# openai>=1.0.0

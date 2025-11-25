@@ -1,0 +1,48 @@
+{
+  "api_key": "ENV",
+  "use_claude": false,
+  "agent_name": "Luma",
+  "agent_personality": {
+    "curiosity": 0.8,
+    "empathy": 0.9,
+    "creativity": 0.7,
+    "analytical": 0.8,
+    "playfulness": 0.6
+  },
+  "display_settings": {
+    "resolution": 1024,
+    "fps": 30,
+    "fullscreen": false,
+    "hdmi_output": true
+  },
+  "hologram_settings": {
+    "projection_type": "pyramid",
+    "base_diameter_cm": 30,
+    "height_cm": 25,
+    "calibration_profile": "default"
+  },
+  "features": {
+    "voice_enabled": true,
+    "gesture_recognition": false,
+    "multi_agent": false,
+    "learning_system": true,
+    "memory_persistence": true
+  },
+  "memory_settings": {
+    "memory_path": "./memories/",
+    "max_short_term": 10,
+    "max_long_term": 1000,
+    "auto_save_interval": 300
+  },
+  "performance": {
+    "use_gpu": true,
+    "max_particles": 1000,
+    "render_quality": "high",
+    "cache_size_mb": 500
+  },
+  "security": {
+    "encrypt_memories": true,
+    "audit_logging": true,
+    "gdpr_mode": true
+  }
+}

@@ -33,15 +33,35 @@ El proyecto requiere las siguientes bibliotecas de Python:
 
 Si no tienes Python instalado, descárgalo desde el sitio oficial: https://www.python.org/downloads/
 
-### Paso 2: Instalar las dependencias
+### Paso 2: Crear un entorno virtual (recomendado)
 
-Abre una terminal o línea de comandos y ejecuta:
+Para evitar conflictos con otras instalaciones de Python, crea un entorno virtual:
+
+```bash
+python -m venv hologram_env
+```
+
+Activa el entorno virtual:
+
+- En Windows:
+  ```bash
+  hologram_env\Scripts\activate
+  ```
+
+- En macOS/Linux:
+  ```bash
+  source hologram_env/bin/activate
+  ```
+
+### Paso 3: Instalar las dependencias
+
+Con el entorno virtual activado, instala las bibliotecas requeridas:
 
 ```bash
 pip install opencv-python numpy
 ```
 
-Si usas conda:
+Si usas conda en lugar de pip:
 
 ```bash
 conda install opencv numpy
@@ -78,6 +98,19 @@ python 3DHologram.py imagen_ejemplo.png
 ```
 
 Esto creará un archivo `hologram.png` con el holograma generado.
+
+#### Para procesar un video:
+
+```bash
+python 3DHologram.py ruta/a/tu/video.avi
+```
+
+Ejemplo:
+```bash
+python 3DHologram.py mi_video.avi
+```
+
+Esto procesará el video frame por frame y creará un archivo `hologram.avi` con el efecto holográfico aplicado.
 
 #### Para procesar un video:
 
@@ -190,9 +223,22 @@ pip install opencv-python
 
 ### Problemas con videos
 
+**IMPORTANTE:** Si encuentras errores como "Processing 0 frames" o mensajes de corrupción de video, consulta la [Guía de Solución de Problemas Detallada](TROUBLESHOOTING.md) para soluciones completas.
+
+**Solución Rápida para Videos Corruptos:**
+```bash
+# Reparar video con FFmpeg
+ffmpeg -i video_corrupto.avi -c:v libx264 -preset medium -crf 23 video_reparado.mp4
+
+# Procesar video reparado
+python 3DHologram.py video_reparado.mp4
+```
+
+Otros problemas comunes:
 - Asegúrate de que el archivo de video no esté corrupto
 - Verifica que tengas permisos de escritura en el directorio
 - Para videos grandes, aumenta la memoria RAM disponible
+- El script mejorado ahora maneja automáticamente frames corruptos
 
 ### Imágenes distorsionadas
 
@@ -201,9 +247,27 @@ pip install opencv-python
 
 ## Notas Técnicas
 
-- El script utiliza la API antigua de OpenCV (`cv2.cv.CV_FOURCC`) en algunas partes. Para OpenCV 4.x, considera actualizar a `cv2.VideoWriter_fourcc()`.
+- El script ha sido actualizado para usar la API moderna de OpenCV (`cv2.VideoWriter_fourcc()`).
+- Incluye manejo robusto de errores para videos corruptos o con frames dañados.
+- Soporta múltiples codecs de salida con fallback automático (mp4v, XVID, H264, MJPG).
 - El procesamiento es CPU intensivo; considera usar GPU para videos largos.
 - Los hologramas generados son simulaciones ópticas y requieren visualización especial para el efecto 3D completo.
+- Para problemas detallados y soluciones, consulta [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md).
+
+## Mejoras Recientes (v2.0)
+
+### Características Nuevas:
+- ✅ **Validación de video mejorada**: Detecta y reporta problemas antes de procesar
+- ✅ **Manejo de frames corruptos**: Salta automáticamente frames dañados
+- ✅ **Múltiples codecs de salida**: Prueba automáticamente diferentes codecs
+- ✅ **Logging detallado**: Información clara sobre el progreso y errores
+- ✅ **Conteo de frames robusto**: Funciona incluso con metadata incorrecta
+- ✅ **Indicadores de progreso**: Muestra el avance del procesamiento
+- ✅ **Mejor manejo de errores**: Mensajes claros y soluciones sugeridas
+
+### Archivos de Salida:
+- **Imágenes**: `hologram.png` (mismo nombre que antes)
+- **Videos**: `hologram_output.mp4` o `hologram_output.avi` (según codec disponible)
 
 ## Contribución
 

@@ -1,0 +1,69 @@
+{
+  "app_name": "HoloVoice",
+  "version": "1.0.0",
+  "description": "Web app integrating ElevenLabs voice agent with hologram generation",
+
+  "elevenlabs": {
+    "agent_url": "https://elevenlabs.io/app/talk-to?agent_id=agent_6301kawg1z5efpvvp2kf89dngav6",
+    "embed_allow_attributes": "microphone; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  },
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "reload": true,
+    "log_level": "info"
+  },
+
+  "file_handling": {
+    "upload_dir": "./uploads",
+    "output_dir": "./outputs",
+    "max_file_size": 52428800,
+    "allowed_extensions": [".png", ".jpg", ".jpeg", ".avi", ".mp4"],
+    "cleanup_after_hours": 24
+  },
+
+  "hologram_settings": {
+    "default_scale": 0.5,
+    "default_scaleR": 4,
+    "default_distance": 0,
+    "max_resolution": 2048,
+    "supported_formats": ["png", "mp4", "avi"]
+  },
+
+  "processing": {
+    "max_concurrent_jobs": 3,
+    "job_timeout_seconds": 300,
+    "enable_gpu_acceleration": true
+  },
+
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "holovoice.log"
+  },
+
+  "features": {
+    "voice_agent_integration": true,
+    "real_time_updates": true,
+    "file_download": true,
+    "responsive_ui": true,
+    "error_handling": true
+  },
+
+  "ui": {
+    "theme": "dark_gradient",
+    "primary_color": "#667eea",
+    "secondary_color": "#764ba2",
+    "animations": true,
+    "holographic_effects": true
+  },
+
+  "security": {
+    "cors_origins": ["*"],
+    "rate_limiting": {
+      "uploads_per_minute": 10,
+      "requests_per_minute": 60
+    }
+  }
+}

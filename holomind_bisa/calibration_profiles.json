@@ -1,0 +1,10 @@
+{
+    "default": {
+        "display_width": 1920,
+        "display_height": 1080,
+        "projection_x": 512,
+        "projection_y": 512,
+        "projection_size": 320,
+        "reflector_type": "pyramid"
+    }
+}
